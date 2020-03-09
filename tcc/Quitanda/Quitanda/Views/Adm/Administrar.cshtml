@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Administrar";
+}
+
+@{
+    if (Session["cargo"].ToString().Equals("Administrador"))
+    {
+
+       
+        <img src="~/Imagens/admin.jpg" height="250" width="350" align="left">
+
+        <h3 style="font-family:'Dosis', sans-serif; font-size: 25px; font-weight:bold">
+
+            Bem vindo @Session["nomeUsuarioLogado"]!!!
+
+        </h3>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+        <div class="container">
+
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10">
+
+                    @Html.ActionLink("Cadastrar Funcionário", "CadastrarFun", "Adm", new { @class = "btn btn-primary" })
+
+                    @Html.ActionLink("Lista de Funcionários", "ListarFun", "Adm", new { @class = "btn btn-primary" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.ActionLink("Cadastrar Produtos", "CadastrarProdutos", "Adm", new { @class = "btn btn-danger" })
+
+                    @Html.ActionLink("Lista de Produtos", "ListarProd", "Adm", new { @class = "btn btn-danger" })
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10">
+
+                    <button class="btn btn-success">Categoria</button>
+
+
+                    <button class="btn btn-success">Taxa de Entrega</button>
+
+
+                    <button class="btn btn-success">Forma de Pagamento</button>
+
+
+                    <button class="btn btn-success">Dados da Empresa</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+    }
+    else
+    {
+        @Html.ActionLink("Sair", "Sair", "Adm")
+    }
+
+
+
+}

@@ -1,0 +1,84 @@
+﻿@model Quitanda.Models.Usuario
+@{
+    ViewBag.Title = "Deletar Funcionário";
+}
+
+
+<br />
+
+<hr style="border-color: orange" />
+
+<h2 style="font-family:'Dosis', sans-serif; font-size: 36px; font-weight:bold">Deletar Funcionário</h2>
+
+<br />
+
+<h3 style="font-family:'Dosis', sans-serif; font-size: 25px">
+
+    Você tem certeza que quer deletar?<br />
+
+    Essa função irá apagar de modo permanente o registro abaixo:
+
+</h3>
+
+<div>
+
+    <hr />
+
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo)
+
+    </dl>
+
+    @using (Html.BeginForm())
+
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+
+            <button type="submit" class="btn btn-danger">Deletar</button>
+
+            <br />
+            <hr />
+            <br />
+            @Html.ActionLink("Página Principal", "Administrar", "Home", new { @class = "btn btn-primary" })
+            @Html.ActionLink("Retornar a lista", "ListarFun", "", new { @class = "btn btn-success" })
+        </div>
+    }
+
+</div>
+

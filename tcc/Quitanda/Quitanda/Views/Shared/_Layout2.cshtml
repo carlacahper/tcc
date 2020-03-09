@@ -1,0 +1,72 @@
+﻿<!DOCYTPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale-1.0" />"
+    <title>@ViewBag.Title- Meu Projeto ASP.NET MVC</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+</head>
+
+
+<body>
+
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+        <div class="container">
+
+            <div>
+
+                <h3 style="font-family:'Dosis', sans-serif; font-size: 23px; color:white">Sabores Fitness</h3>
+            </div>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" arial-contols="navbarResponsive"
+                    arial-expanded="false" arial-label="Toggle navigation">
+                <span class=" navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item active">
+
+                        @Html.ActionLink("Sair", "Index", "Home", "", new { @style = "color:white; font-family:Pacifico; font-size:21px" })
+
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+   
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    <div class="panel-footer">
+        <footer>
+            <p>&copy;@DateTime.Now.Year-Bem vindo ao nosso Sistema</p>
+        </footer>
+
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+

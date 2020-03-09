@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Quitanda.Models.Produto>
+@{
+    ViewBag.Title = "Lista de Produtos";
+}
+
+<br />
+
+<h2 style="font-family:'Dosis', sans-serif; font-size: 36px; font-weight:bold">Lista de Produtos</h2>
+
+<br />
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome_Produto)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Valor_Produto)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Tamanho_Marmita)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Descrição_Produto)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Status_Produto)
+        </th>
+
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelitem => item.Nome_Produto)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelitem => item.Valor_Produto)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelitem => item.Tamanho_Marmita)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelitem => item.Descrição_Produto)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelitem => item.Categoria)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelitem => item.Status_Produto)
+            </td>
+
+
+        </tr>
+
+    }
+
+
+</table>
+

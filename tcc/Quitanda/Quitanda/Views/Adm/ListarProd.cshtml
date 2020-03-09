@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Quitanda.Models.Produto>
+
+@{
+    ViewBag.Title = "Lista de Produtos";
+}
+
+<hr style="border-color: orange" />
+
+<h2 style="font-family:'Dosis', sans-serif; font-size: 36px; font-weight:bold">Lista de Produtos </h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome_Produto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor_Produto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tamanho_Marmita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descrição_Produto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status_Produto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome_Produto)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor_Produto)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Tamanho_Marmita)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Descrição_Produto)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Status_Produto)
+            </td>
+
+            <td>
+                @Html.ActionLink("Editar", "Alterar", new { id = item.Id_Produto }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id_Produto })
+            </td>
+        </tr>
+    }
+
+</table>
+
+    <br />
+
+    <div class="form-group">
+
+        <div class="col-md-offset-2 col-md-10">
+
+            @Html.ActionLink("Página Principal", "Administrar", "Home", new { @class = "btn btn-success" })
+        </div>
+    </div>

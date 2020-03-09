@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Cardápio de Carne";
+}
+
+<br />
+
+<h3 class="text-center bg-warning">Cardapio de Carne</h3>
+
+<br />
+
+
+<div class="row">
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <a href="#"><img class="card-img-top" src="~/Imagens/Imagens/Carne.jpeg" alt=""></a>
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="font-family:'Dosis', sans-serif; font-size: 25px; color:dodgerblue">
+
+                    Polpetone recheado zero lactose
+
+                </h4>
+
+                <h4 style="font-size:15px;font-family:'Dosis', sans-serif">(300 gr)</h4>
+
+                <h5>R$ 14,90</h5>
+
+                <p class="card-text">Carne moída recheada com queijo de búfalo zero lactose</p>
+
+            </div>
+
+            <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9734; &#9734; &#9734;</small>
+            </div>
+
+            <div>
+                @Html.ActionLink("Adicionar ao carrinho", "Polpetone", "Home", new { @class = "btn btn-danger", @style = "width:340px" })
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <a href="#"><img class="card-img-top" src="~/Imagens/Imagens/Carne1.jpeg" alt=""></a>
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="font-family:'Dosis', sans-serif; font-size: 25px; color:dodgerblue">
+
+                    Escondidinho de Carne
+
+                </h4>
+
+                <h4 style="font-size:15px;font-family:'Dosis', sans-serif">(300 gr)</h4>
+
+                <h5>R$ 16,79</h5>
+
+                <p class="card-text">Escondidinho de carne seca com purê de mandioquinha</p>
+
+            </div>
+
+            <div class="card-footer">
+
+                <small class="text-muted">&#9733; &#9733; &#9734; &#9734; &#9734;</small>
+            </div>
+
+
+            <div>
+                @Html.ActionLink("Adicionar ao carrinho", "Escondidinho", "Home", new { @class = "btn btn-danger", @style = "width:340px" })
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <a href="#"><img class="card-img-top" src="~/Imagens/Imagens/Carne2.jpeg" alt=""></a>
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="font-family:'Dosis', sans-serif; font-size: 25px; color:dodgerblue">
+
+                    Patinho de purê com batata doce
+
+                </h4>
+
+                <h4 style="font-size:15px;font-family:'Dosis', sans-serif">(250 gr)</h4>
+
+
+                <h5>R$ 12,29</h5>
+
+                <p class="card-text">Generosa porção de carne moída de patinho, com tempero especial do Chef, acompanhado de um cremoso purê de batata doce</p>
+
+            </div>
+
+            <div class="card-footer">
+                <small class="text-muted">&#9733; &#9734; &#9734; &#9734; &#9734;</small>
+            </div>
+
+            <div>
+                @Html.ActionLink("Adicionar ao carrinho", "PatinhoComPure", "Home", new { @class = "btn btn-danger", @style = "width:340px" })
+            </div>
+
+        </div>
+
+    </div>
+</div>

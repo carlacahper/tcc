@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SaboresFitness2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="CPF" />
+          </Key>
+          <Property Name="CPF" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Logradouro" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Complemento" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Bairro" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cidade" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CEP" Type="char" MaxLength="9" />
+          <Property Name="Telefone" Type="char" MaxLength="13" Nullable="false" />
+          <Property Name="Email_login" Type="varchar" MaxLength="100" />
+          <Property Name="Senha_login" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="Id_Pedido" />
+          </Key>
+          <Property Name="Id_Pedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CPF" Type="char" MaxLength="12" />
+          <Property Name="Data_Compra" Type="date" />
+          <Property Name="Qtde_Itens" Type="int" />
+          <Property Name="Valor_Total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Data_Entrega" Type="date" />
+          <Property Name="Horario_Entrega" Type="time" Precision="7" />
+          <Property Name="Taxa_Entrega" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Status_Entrega" Type="char" MaxLength="10" />
+          <Property Name="Data_Pagamento" Type="date" />
+          <Property Name="Forma_Pagamento" Type="varchar" MaxLength="10" />
+          <Property Name="Status_Pagamento" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Pedido_Produto">
+          <Key>
+            <PropertyRef Name="Id_Pedido_Prod" />
+          </Key>
+          <Property Name="Id_Pedido_Prod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Produto" Type="int" />
+          <Property Name="Id_Pedido" Type="int" />
+        </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="Id_Produto" />
+          </Key>
+          <Property Name="Id_Produto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome_Produto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Valor_Produto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Tamanho_Marmita" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Descrição_Produto" Type="varchar" MaxLength="250" />
+          <Property Name="Categoria" Type="varchar" MaxLength="10" />
+          <Property Name="Status_Produto" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id_Funcionario" />
+          </Key>
+          <Property Name="Id_Funcionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Login" Type="varchar" MaxLength="50" />
+          <Property Name="Senha" Type="varchar" MaxLength="20" />
+          <Property Name="Cargo" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="char" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Cliente_CPF">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="CPF" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="CPF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="0..1" />
+          <End Role="Pedido_Produto" Type="Self.Pedido_Produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="Id_Pedido" />
+            </Principal>
+            <Dependent Role="Pedido_Produto">
+              <PropertyRef Name="Id_Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produto">
+          <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+          <End Role="Pedido_Produto" Type="Self.Pedido_Produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto">
+              <PropertyRef Name="Id_Produto" />
+            </Principal>
+            <Dependent Role="Pedido_Produto">
+              <PropertyRef Name="Id_Produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SaboresFitness2StoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido_Produto" EntityType="Self.Pedido_Produto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cliente_CPF" Association="Self.FK_Cliente_CPF">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido" Association="Self.FK_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Pedido_Produto" EntitySet="Pedido_Produto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produto" Association="Self.FK_Produto">
+            <End Role="Produto" EntitySet="Produto" />
+            <End Role="Pedido_Produto" EntitySet="Pedido_Produto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SaboresFitness2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="CPF" />
+          </Key>
+          <Property Name="CPF" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Logradouro" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Complemento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cidade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CEP" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Email_login" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Senha_login" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Cliente_CPF" FromRole="Cliente" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="Id_Pedido" />
+          </Key>
+          <Property Name="Id_Pedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CPF" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="Data_Compra" Type="DateTime" Precision="0" />
+          <Property Name="Qtde_Itens" Type="Int32" />
+          <Property Name="Valor_Total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Data_Entrega" Type="DateTime" Precision="0" />
+          <Property Name="Horario_Entrega" Type="Time" Precision="7" />
+          <Property Name="Taxa_Entrega" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Status_Entrega" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Data_Pagamento" Type="DateTime" Precision="0" />
+          <Property Name="Forma_Pagamento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status_Pagamento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_CPF" FromRole="Pedido" ToRole="Cliente" />
+          <NavigationProperty Name="Pedido_Produto" Relationship="Self.FK_Pedido" FromRole="Pedido" ToRole="Pedido_Produto" />
+        </EntityType>
+        <EntityType Name="Pedido_Produto">
+          <Key>
+            <PropertyRef Name="Id_Pedido_Prod" />
+          </Key>
+          <Property Name="Id_Pedido_Prod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Produto" Type="Int32" />
+          <Property Name="Id_Pedido" Type="Int32" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido" FromRole="Pedido_Produto" ToRole="Pedido" />
+          <NavigationProperty Name="Produto" Relationship="Self.FK_Produto" FromRole="Pedido_Produto" ToRole="Produto" />
+        </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="Id_Produto" />
+          </Key>
+          <Property Name="Id_Produto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome_Produto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Valor_Produto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Tamanho_Marmita" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descrição_Produto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status_Produto" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Pedido_Produto" Relationship="Self.FK_Produto" FromRole="Produto" ToRole="Pedido_Produto" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id_Funcionario" />
+          </Key>
+          <Property Name="Id_Funcionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Senha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Cargo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Cliente_CPF">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="CPF" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="CPF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="0..1" />
+          <End Role="Pedido_Produto" Type="Self.Pedido_Produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="Id_Pedido" />
+            </Principal>
+            <Dependent Role="Pedido_Produto">
+              <PropertyRef Name="Id_Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produto">
+          <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+          <End Role="Pedido_Produto" Type="Self.Pedido_Produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto">
+              <PropertyRef Name="Id_Produto" />
+            </Principal>
+            <Dependent Role="Pedido_Produto">
+              <PropertyRef Name="Id_Produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SaboresFitnessEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+          <EntitySet Name="Pedido_Produto" EntityType="Self.Pedido_Produto" />
+          <EntitySet Name="Produto" EntityType="Self.Produto" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Cliente_CPF" Association="Self.FK_Cliente_CPF">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido" Association="Self.FK_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Pedido_Produto" EntitySet="Pedido_Produto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produto" Association="Self.FK_Produto">
+            <End Role="Produto" EntitySet="Produto" />
+            <End Role="Pedido_Produto" EntitySet="Pedido_Produto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SaboresFitness2StoreContainer" CdmEntityContainer="SaboresFitnessEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="SaboresFitness2.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Email_login" ColumnName="Email_login" />
+                <ScalarProperty Name="Senha_login" ColumnName="Senha_login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido">
+            <EntityTypeMapping TypeName="SaboresFitness2.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="Data_Compra" ColumnName="Data_Compra" />
+                <ScalarProperty Name="Qtde_Itens" ColumnName="Qtde_Itens" />
+                <ScalarProperty Name="Valor_Total" ColumnName="Valor_Total" />
+                <ScalarProperty Name="Data_Entrega" ColumnName="Data_Entrega" />
+                <ScalarProperty Name="Horario_Entrega" ColumnName="Horario_Entrega" />
+                <ScalarProperty Name="Taxa_Entrega" ColumnName="Taxa_Entrega" />
+                <ScalarProperty Name="Status_Entrega" ColumnName="Status_Entrega" />
+                <ScalarProperty Name="Data_Pagamento" ColumnName="Data_Pagamento" />
+                <ScalarProperty Name="Forma_Pagamento" ColumnName="Forma_Pagamento" />
+                <ScalarProperty Name="Status_Pagamento" ColumnName="Status_Pagamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido_Produto">
+            <EntityTypeMapping TypeName="SaboresFitness2.Pedido_Produto">
+              <MappingFragment StoreEntitySet="Pedido_Produto">
+                <ScalarProperty Name="Id_Pedido_Prod" ColumnName="Id_Pedido_Prod" />
+                <ScalarProperty Name="Id_Produto" ColumnName="Id_Produto" />
+                <ScalarProperty Name="Id_Pedido" ColumnName="Id_Pedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produto">
+            <EntityTypeMapping TypeName="SaboresFitness2.Produto">
+              <MappingFragment StoreEntitySet="Produto">
+                <ScalarProperty Name="Id_Produto" ColumnName="Id_Produto" />
+                <ScalarProperty Name="Nome_Produto" ColumnName="Nome_Produto" />
+                <ScalarProperty Name="Valor_Produto" ColumnName="Valor_Produto" />
+                <ScalarProperty Name="Tamanho_Marmita" ColumnName="Tamanho_Marmita" />
+                <ScalarProperty Name="Descrição_Produto" ColumnName="Descrição_Produto" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Status_Produto" ColumnName="Status_Produto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="SaboresFitness2.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id_Funcionario" ColumnName="Id_Funcionario" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

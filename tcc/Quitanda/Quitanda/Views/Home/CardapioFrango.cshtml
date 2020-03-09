@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Cardapio de Frango";
+}
+
+<br />
+
+<h3 class="text-center bg-warning">Cardapio de Frango</h3>
+
+<br />
+
+<div class="row">
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <a href="#"><img class="card-img-top" src="~/Imagens/Imagens/Frango1.jpeg" alt=""></a>
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="font-family:'Dosis', sans-serif; font-size: 25px; color:dodgerblue">
+
+                    Frango com mandioquinha
+
+                </h4>
+
+                <h4 style="font-size:15px;font-family:'Dosis', sans-serif">(250 gr)</h4>
+
+
+                <h5>R$ 15,00 </h5>
+
+                <p class="card-text">Delicioso frango desfiado com tempero especial do Chef e acompanhado de um cremoso de purê de mandioquinha</p>
+
+            </div>
+
+            <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+            </div>
+
+            <div>
+                @Html.ActionLink("Adicionar ao carrinho", "FrangoComMandioquinha", "Home", new { @class = "btn btn-danger", @style = "width:340px" })
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <a href="#"><img class="card-img-top" src="~/Imagens/Imagens/Frango2.jpeg" alt=""></a>
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="font-family:'Dosis', sans-serif; font-size: 25px; color:dodgerblue">
+
+                    Frango desfiado com purê de batata doce
+
+                </h4>
+
+                <h4 style="font-size:15px;font-family:'Dosis', sans-serif">(250 gr)</h4>
+
+                <h5>R$ 14,00</h5>
+
+                <p class="card-text">Purê de batata doce, que é ideal para o pós treino e nosso frango desfiado, temperado com nosso tempero caseiro</p>
+
+            </div>
+
+            <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
+            </div>
+
+
+            <div>
+                @Html.ActionLink("Adicionar ao carrinho", "FrangoDesfiado", "Home", new { @class = "btn btn-danger", @style = "width:340px" })
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <a href="#"><img class="card-img-top" src="~/Imagens/Imagens/Frango3.jpeg" alt=""></a>
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="font-family:'Dosis', sans-serif; font-size: 25px; color:dodgerblue">
+
+                    Panqueca integral de frango
+
+                </h4>
+
+                <h4 style="font-size:15px;font-family:'Dosis', sans-serif">(300 gr)</h4>
+
+                <h5>R$ 16,00</h5>
+
+                <p class="card-text"> Massa de Panqueca integral que é rico em fibras recheada com frango desfiado  </p>
+
+            </div>
+
+            <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            </div>
+
+
+            <div>
+                @Html.ActionLink("Adicionar ao carrinho", "Panqueca", "Home", new { @class = "btn btn-danger", @style = "width:340px" })
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

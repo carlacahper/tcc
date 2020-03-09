@@ -1,0 +1,96 @@
+﻿@model Quitanda.Models.Produto
+@{
+    ViewBag.Title = "Delete";
+}
+
+<hr style="border-color: orange" />
+
+<h2 style="font-family:'Dosis', sans-serif; font-size: 36px; font-weight:bold">Deletar Produtos</h2>
+
+<br />
+
+
+<h3 style="font-family:'Dosis', sans-serif; font-size: 25px">
+    Você tem certeza que quer deletar?<br />
+
+    Essa função irá apagar de modo permanente o registro abaixo:
+
+</h3>
+
+<div>
+
+    <hr />
+
+    <dl class="dl-horizontal">
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_Produto)
+        </dt>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome_Produto)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor_Produto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor_Produto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tamanho_Marmita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tamanho_Marmita)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descrição_Produto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descrição_Produto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria)
+
+    </dl>
+
+    @using (Html.BeginForm())
+
+    {
+        @Html.AntiForgeryToken()
+
+        <br />
+
+        <hr style="border-color: orange" />
+
+        <br />
+
+        <div class="form-actions no-color">
+
+            <button type="submit" class="btn btn-danger">Deletar</button>
+
+            <br />
+            <hr />
+            <br />
+            @Html.ActionLink("Página Principal", "Administrar", "Home", new { @class = "btn btn-primary" })
+            @Html.ActionLink("Retornar a lista", "ListarProd", "", new { @class = "btn btn-success" })
+        </div>
+    }
+
+</div>
+

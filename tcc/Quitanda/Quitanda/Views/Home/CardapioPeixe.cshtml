@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Cardapio de Peixe";
+}
+
+<br />
+
+<h3 class="text-center bg-warning">Cardapio de Peixe</h3>
+
+<br />
+
+<div class="row">
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <a href="#"><img class="card-img-top" src="~/Imagens/Imagens/Peixe1.jpeg" alt=""></a>
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="font-family:'Dosis', sans-serif; font-size: 25px; color:dodgerblue">
+
+                    Tilápia grelhada com purê de mandioquinha
+
+                </h4>
+
+                <h4 style="font-size:15px;font-family:'Dosis', sans-serif">(250 gr)</h4>
+
+                <h5>R$ 17,50</h5>
+
+                <p class="card-text">Combinação Perfeita textura agradável do purê composto por mandioquinha e sal, acompanhado da tilápia que e uma excelente fonte de proteína com baixo teor de gordura</p>
+
+            </div>
+
+
+            <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+            </div>
+
+            <div>
+                @Html.ActionLink("Adicionar ao carrinho", "TilapiaGrelhada", "Home", new { @class = "btn btn-danger", @style = "width:340px" })
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <a href="#"><img class="card-img-top" src="~/Imagens/Imagens/Peixe2.jpeg" alt=""></a>
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="font-family:'Dosis', sans-serif; font-size: 25px; color:dodgerblue">
+
+                    Filé de salmão com purê de abóbora e mix de vegetais
+
+                </h4>
+
+                <h4 style="font-size:15px;font-family:'Dosis', sans-serif">(300 gr)</h4>
+
+                <h5>R$ 17,00</h5>
+
+                <p class="card-text">O salmão é rico em ácidos graxos, ômega 3 e vitaminas do complexo B, a abóbora forje contêm carboidratos e fibras, e os legumes contêm as vitaminas minerais</p>
+
+            </div>
+
+            <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
+            </div>
+
+            <div>
+                @Html.ActionLink("Adicionar ao carrinho", "FileSalmao", "Home", new { @class = "btn btn-danger", @style = "width:340px" })
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <a href="#"><img class="card-img-top" src="~/Imagens/Imagens/Peixe3.jpeg" alt=""></a>
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="font-family:'Dosis', sans-serif; font-size: 25px; color:dodgerblue">
+
+                    Salmão com chia
+
+                </h4>
+
+                <h4 style="font-size:15px;font-family:'Dosis', sans-serif">(300 gr)</h4>
+
+                <h5>R$ 25,00</h5>
+
+                <p class="card-text">Delicioso salmão grelhado coberta com uma costa de chia, esse prato acompanhado com arroz interal a grega e abobrinha grelhada </p>
+
+            </div>
+
+            <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            </div>
+
+            <div>
+                @Html.ActionLink("Adicionar ao carrinho", "SalmaoComChia", "Home", new { @class = "btn btn-danger", @style = "width:340px" })
+            </div>
+
+        </div>
+
+    </div>
+</div>

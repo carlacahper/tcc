@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Home</title>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/MeuEstilo.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+      
+<body>
+    <!--menu de navegação-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+        <div class="container">
+
+
+            <div>
+                @Html.ActionLink("Sabores Fitness", "Index", "Home", new { @class = "nav-link", span = "sr-only" , @style= "color:white; font-size:20px"})
+
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" arial-contols="navbarResponsive"
+                    arial-expanded="false" arial-label="Toggle navigation">
+                <span class=" navbar-toggler-icon"></span>
+            </button>
+
+            <div class=" collapse navbar-collapse" id="navbarResponsive">
+
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item active">
+
+                        <div>
+                            @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link", span = "sr-only" })
+
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item ">
+
+                        <div>
+                            @Html.ActionLink("Login", "Login", "Home", new { @class = "nav-link", span = "sr-only" })
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item ">
+
+                        <div>
+                            @Html.ActionLink("Cadastre-se", "Cadastro", "Home", new { @class = "nav-link" })
+                        </div>
+
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categorias</a>
+                        <div class="dropdown-menu">
+                            @Html.ActionLink("Carne", "CardapioCarne", "Home", new { @class = "dropdown-item" })
+                            @Html.ActionLink("Frango", "CardapioFrango", "Home", new { @class = "dropdown-item" })
+                            @Html.ActionLink("Peixe", "CardapioPeixe", "Home", new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">Meu carrinho</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+
+    <footer class="bg-dark">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-4 col-md-4">
+
+                    <div class="caption">
+
+                        <br />
+
+                        <h3 style="font-family:Pacifico;text-transform:uppercase;color:#a4cb39;font-weight:bold;font-size:23px">Sobre Sabores Fitness</h3>
+
+                        <div>
+                            @Html.ActionLink("Quem somos", "QuemSomos", "Home", htmlAttributes: new { @style = "color:white; font-family:Pacifico; font-size:18px" })
+                        </div>
+
+                        <div>
+                            @Html.ActionLink("Fale Conosco", "DeixeSuaMensagem", "Home", htmlAttributes: new { @style = "color:white; font-family:Pacifico; font-size:18px" }))
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-sm-4 col-md-4">
+
+                    <div class="caption">
+
+                        <br />
+
+                        <h3 style="font-family:Pacifico;text-transform:uppercase;font-size:23px;font-weight:bold;color:#a4cb39">Mídias sociais</h3>
+
+                        <br />
+
+                                    
+                        <h6 style="color:white; font-size:18px;font-family:Pacifico">Facebook</h6>
+                              
+                                                        
+                        <h6 style="color:white; font-size:18px;font-family:Pacifico">Instagram</h6>                       
+
+                    
+                    </div>
+
+                </div>
+
+                <div class="col-sm-4 col-md-4">
+
+                    <br />
+
+
+                    <h5 style="font-family:Pacifico;text-transform:uppercase;font-size:25px;font-weight:bold;color:#a4cb39">Dicas para sua saúde</h5>
+
+                    <br />
+
+                    <h6 style="color:white; font-size:15px;font-family:Pacifico">
+                        1- A boa alimentação melhora a saúde, influência no humor e na produtividade física e intelectual
+                        <br />
+                        2-Alimentar-se corretamente traz satisfação e saciedade. Ao receber nutrientes adequados nosso organismo
+                        passa a selecionar melhor a qualidade do que ingerimos, tornando a prática um hábito benéfico.
+
+                        <br />
+
+                        3- A reeducação alimentar promove mudanças comportamentais positivas no estilo de vida das pessoas.
+
+                        <br />
+
+                        4-Para praticantes de atividades físicas regulares, a alimentação tem impacto direto na disposição e resultados.
+
+                        <br />
+
+                        5- A ausência de alimentação adequada ou pobre em nutrientes provoca fraqueza e indisposição e pode frustrar a conquista de metas e objetivos.
+
+                        <br />
+
+                        6- Sempre que possível, opte por alimentos mais nutritivos e naturais que encontrar, fuja de industrializados e alimentos processados.
+
+                    </h6>
+
+                </div>
+            </div>
+
+            <br />
+
+            <p style="font-family:Arial, Helvetica, sans-serif;font-size:10px;color:white; text-align:center">RUA INTERNA GRUPO BANDEIRANTES, 138, JARDIM BELVAL, BARUERI(SP)-SAC@SABORESFITNESS.COM.BR-(00)0000-0000-CNPJ:12.543.678/0001-35</p>
+
+            <br />
+
+        </div>
+
+    </footer>
+
+    <br />
+
+    <img src="~/Imagens/Forma de pagamento.JPG" height="50" width="450" alt="Forma de pagamento">
+
+    <br />
+
+    <hr style="border-color: orange" />
+
+    <h4 style="font-size:15px; text-align:center">© 2019 Copyright:Sabores Fitness.com.br- Todos os direitos reservados</h4>
+
+</body>
+
+</html>

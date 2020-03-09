@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Quitanda.Models.Usuario>
+
+@{
+    ViewBag.Title = "ListarFun";
+}
+
+<br />
+
+
+<h3 style="font-family:'Dosis', sans-serif; font-size: 36px; font-weight:bold">Lista de Funcionário</h3>
+
+<br />
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Senha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargo)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+            <td>
+                @Html.ActionLink("Editar", "AlterarFun", new { id = item.Id_Funcionario }) |
+                @Html.ActionLink("Delete", "DeleteFunc", new { id = item.Id_Funcionario })
+            </td>
+
+
+
+        </tr>
+    }
+
+
+
+</table>
+
+
+    <br />
+
+    <div class="form-group">
+
+        <div class="col-md-offset-2 col-md-10">
+
+            @Html.ActionLink("Página Principal", "Administrar", "Home", new { @class = "btn btn-success" })
+        </div>
+    </div>

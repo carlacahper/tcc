@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Login.Models.usuario>
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2 class="text-danger text-center text-uppercase bg-info">Lista de Funcionários</h2>
+
+<hr />
+
+<p class="text-success">
+
+    O código "model IEnumerable" <Login.Models.usuario > indica a view qual o model será utilizado, <br />
+    no caso do nosso exemplo iremos utilizar o model usuário ("tabela" usuário)<br />
+    O Helper Html.DisplayNameFor retorna o conteúdo do campo da Model.
+
+</p>
+
+<table class="table">
+
+    <tr>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.nome)
+
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.cargo)
+
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+
+        </th>
+        <ht></ht>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.cargo)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+
+    </tr>
+
+
+    }
+
+
+</table>
+
